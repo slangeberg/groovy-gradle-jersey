@@ -1,0 +1,34 @@
+def jerseyVersion = "1.18.1"
+
+///////////////////////////////////////
+
+apply plugin: "eclipse"
+apply plugin: "groovy"
+apply plugin: "jetty"
+apply plugin: "war"
+
+///////////////////////////////////////
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.2.0"
+    compile "javax.ws.rs:jsr311-api:1.1.1"
+
+    compile "com.sun.jersey:jersey-server:${jerseyVersion}"
+    compile "com.sun.jersey:jersey-core:${jerseyVersion}"
+    compile "com.sun.jersey:jersey-servlet:${jerseyVersion}"
+
+    testCompile "junit:junit-dep:4.11"
+}
+
+jettyRun {
+    reload "automatic"
+    scanIntervalSeconds 1
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
+
+repositories {
+    mavenCentral()
+}
