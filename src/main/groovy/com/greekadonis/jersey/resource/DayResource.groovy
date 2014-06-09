@@ -1,6 +1,7 @@
 package com.greekadonis.jersey.resource
 
 import com.greekadonis.jersey.domain.Day
+import org.json.JSONArray
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,7 +13,7 @@ class DayResource {
     @GET
     //@Path("/")
    @Produces(MediaType.APPLICATION_JSON)
-    public List<Day> findAll() {
-        [new Day(id: 1), new Day(id: 2), new Day(id: 3)]
+    public JSONArray findAll() {
+        new JSONArray([new Day(id: 1).id, new Day(id: 2).id, new Day(id: 3).id])
     }
 }
