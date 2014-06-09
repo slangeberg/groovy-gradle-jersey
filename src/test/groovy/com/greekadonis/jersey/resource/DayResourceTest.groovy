@@ -14,4 +14,8 @@ class DayResourceTest {
     void findAll() {
         assert dayResource.findAll().size() == 3
     }
+    @Test
+    void findAllDays() {
+        assert dayResource.findAllDays().size() == 3
+    }
 }

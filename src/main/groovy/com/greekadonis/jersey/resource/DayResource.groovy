@@ -13,7 +13,13 @@ class DayResource {
     @GET
     //@Path("/")
    @Produces(MediaType.APPLICATION_JSON)
-    public JSONArray findAll() {
-        new JSONArray([new Day(id: 1).id, new Day(id: 2).id, new Day(id: 3).id])
+    public int[] findAll() {
+        findAllDays().collect { Day day ->
+            day.id
+        }
+    }
+
+    public List<Day> findAllDays() {
+        [new Day(id: 1), new Day(id: 2), new Day(id: 3)]
     }
 }

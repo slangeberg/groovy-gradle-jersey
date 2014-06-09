@@ -1,4 +1,5 @@
 def jerseyVersion = "1.18.1"
+def jettyPort = 88
 
 ///////////////////////////////////////
 
@@ -14,7 +15,10 @@ apply plugin: "war"
 jettyRun {
     reload = "automatic"
     scanIntervalSeconds = 1
-    httpPort = 88
+    httpPort = jettyPort
+}
+jettyRunWar {
+    httpPort = jettyPort
 }
 
 task wrapper(type: Wrapper) {
@@ -50,7 +54,7 @@ dependencies {
     compile 'org.json:json:20140107'
     compile "javax.ws.rs:jsr311-api:1.1.1"
 
-    testCompile "junit:junit-dep:4.11"
+    testCompile 'junit:junit:4.11'
 }
 repositories {
     mavenLocal()
