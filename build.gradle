@@ -2,7 +2,7 @@ def jerseyVersion = "1.18.1"
 
 ///////////////////////////////////////
 
-apply plugin: "eclipse"
+//apply plugin: "eclipse"
 apply plugin: "groovy"
 apply plugin: "jetty"
 apply plugin: "war"
@@ -13,6 +13,7 @@ dependencies {
     compile "org.codehaus.groovy:groovy-all:2.2.0"
     compile "javax.ws.rs:jsr311-api:1.1.1"
 
+    compile "com.sun.jersey:jersey-client:${jerseyVersion}"
     compile "com.sun.jersey:jersey-server:${jerseyVersion}"
     compile "com.sun.jersey:jersey-core:${jerseyVersion}"
     compile "com.sun.jersey:jersey-servlet:${jerseyVersion}"
@@ -20,9 +21,11 @@ dependencies {
     testCompile "junit:junit-dep:4.11"
 }
 
+//Run exploded WAR
 jettyRun {
-    reload "automatic"
-    scanIntervalSeconds 1
+    reload = "automatic"
+    scanIntervalSeconds = 1
+    httpPort = 88
 }
 
 task wrapper(type: Wrapper) {
@@ -30,5 +33,6 @@ task wrapper(type: Wrapper) {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
