@@ -10,15 +10,17 @@ import javax.ws.rs.core.MediaType;
 
 @Path("day")
 class DayResource {
-    @GET
-    //@Path("/")
-   @Produces(MediaType.APPLICATION_JSON)
-    public int[] findAll() {
-        findAllDays().collect { Day day ->
+  //  @GET
+  // @Produces(MediaType.APPLICATION_JSON)
+    public List findAll() {
+        def result = findAllDays().collect { Day day ->
             day.id
         }
+        result
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Day> findAllDays() {
         [new Day(id: 1), new Day(id: 2), new Day(id: 3)]
     }
