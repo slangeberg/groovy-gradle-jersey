@@ -23,7 +23,12 @@ class DayResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Day> findAllDays() {
-       [new Day(id: 1), new Day(id: 2), new Day(id: 3)]
+        [
+                new Day(id: 1),
+                new Day(id: 2),
+                new Day(id: 3),
+                new Day(id: 4)
+        ]
     }
 
     @GET
@@ -31,8 +36,8 @@ class DayResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Day find(@PathParam("id") int id) {
         List days = findAllDays()
-        if( days.size() > id ){
-            return days[id-1]
+        if (days.size() > id) {
+            return days[id - 1]
         }
         return null
     }
